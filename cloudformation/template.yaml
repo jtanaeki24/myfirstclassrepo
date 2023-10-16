@@ -314,8 +314,8 @@ Resources:
       VpcId: !Ref VPC
       SecurityGroupIngress:
       - IpProtocol: tcp
-        FromPort: 8080
-        ToPort: 8080
+        FromPort: 8081
+        ToPort: 8081
         CidrIp: 0.0.0.0/0
       SecurityGroupEgress:
       - IpProtocol: '-1'
@@ -327,8 +327,8 @@ Resources:
       VpcId: !Ref VPC
       SecurityGroupIngress:
       - IpProtocol: tcp
-        FromPort: 8080
-        ToPort: 8080
+        FromPort: 8081
+        ToPort: 8081
         SourceSecurityGroupId:
           Ref: ALBSecurityGroup
       SecurityGroupEgress:
@@ -443,7 +443,7 @@ Resources:
               [Install]
               WantedBy=multi-user.target" > /etc/systemd/system/tomcat.service
 
-              # firewall-cmd --zone=public --permanent --add-port=8080/tcp
+              # firewall-cmd --zone=public --permanent --add-port=8081/tcp
               # firewall-cmd --zone=public --permanent --add-port=8443/tcp
               # firewall-cmd --reload
               cd /usr/local/tomcat9/bin && chmod +x catalina.sh
@@ -489,7 +489,7 @@ Resources:
             Ref: ALBTargetGroup
       LoadBalancerArn:
         Ref: ApplicationLoadBalancer
-      Port: 8080
+      Port: 8081
       Protocol: HTTP
   ApplicationLoadBalancer:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
@@ -508,7 +508,7 @@ Resources:
       UnhealthyThresholdCount: 2
       HealthyThresholdCount: 2
       HealthCheckPath: "/"
-      Port: 8080
+      Port: 8081
       Protocol: HTTP
       VpcId: !Ref VPC
 Outputs:
