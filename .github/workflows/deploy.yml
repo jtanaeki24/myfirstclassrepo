@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
 
 env:
-  applicationfolder: 
+  applicationfolder: myfirstclassrepo
   AWS_REGION: us-east-1
   S3BUCKET: codedeploystack-webappdeploymentbucket-19iueev6epkmm
 
