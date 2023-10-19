@@ -11,6 +11,8 @@
 
     env:
       applicationfolder:
+  <li>Go to the <i>Upload Artifact to s3</i> step under the <i>build</i> job.</li>
+  <li>Change the <i>working-directory</i> value to <i>/home/runner/work/myfirstclassrepo/myfirstclassrepo/target</i></li>
   <li>Navigate to <i>pom.yml</i> file in root directory.</li>
   <li>Change <i>java.version</i> to <i>8</i>.</li>
 </ol>
