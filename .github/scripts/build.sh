@@ -2,7 +2,6 @@
 set -xe
 
   # Maven is used to build  and create a war file.
-  # mvn -Dmaven.test.skip=true clean install
-  mvnw clean package
+  mvn -Dmaven.test.skip=true clean package
 
 
