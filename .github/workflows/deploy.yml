@@ -6,7 +6,7 @@ on:
 env:
   applicationfolder: 
   AWS_REGION: us-east-1
-  S3BUCKET: codedeploystack-webappdeploymentbucket-qiixce0ys1io
+  S3BUCKET: codedeploystack-webappdeploymentbucket-tqy4oc8qddha
 
 
 jobs:

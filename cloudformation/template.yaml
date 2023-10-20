@@ -337,10 +337,10 @@ Resources:
   SSHSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: 
+      GroupDescription: ssh security group
       VpcId: !Ref VPC
       SecurityGroupIngress:
-      - IpProtocol: ssh
+      - IpProtocol: tcp
         FromPort: 22
         ToPort: 22
         SourceSecurityGroupId:
