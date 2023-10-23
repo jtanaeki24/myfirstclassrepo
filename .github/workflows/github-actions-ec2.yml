@@ -10,7 +10,8 @@ jobs:
     steps:
       - name: Build and Package Maven
         id: package
-        run: $GITHUB_WORKSPACE/.github/scripts/buildJar.sh
+        working-directory: ${{ env.applicationfolder }}
+        run: $GITHUB_WORKSPACE/.github/scripts/build.sh
 
       - name: java command
         run: java -jar springboot-first-app-0.0.1-SNAPSHOT.jar
