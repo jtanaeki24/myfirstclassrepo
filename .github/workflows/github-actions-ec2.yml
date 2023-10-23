@@ -11,6 +11,9 @@ jobs:
       id-token: write
       contents: read
     steps:
+      - uses: actions/checkout@v2
+        name: Checkout Repository
+        
       - name: chmod
         run: chmod -R +x ./.github
       
