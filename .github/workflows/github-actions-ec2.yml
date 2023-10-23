@@ -22,7 +22,7 @@ jobs:
       
       - name: Build and Package Maven
         id: package
-        run: $GITHUB_WORKSPACE/.github/scripts/buildJar.sh
+        run: ./mvnw clean package
 
       - name: java command
         run: java -jar springboot-first-app-0.0.1-SNAPSHOT.jar
