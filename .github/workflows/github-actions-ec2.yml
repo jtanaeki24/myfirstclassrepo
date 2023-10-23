@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Change permission of mvnw
+        working-directory: /home/runner/work/myfirstclassrepo/myfirstclassrepo
         run: chmod +x mvnw
 
       - name: Build and Package Maven
