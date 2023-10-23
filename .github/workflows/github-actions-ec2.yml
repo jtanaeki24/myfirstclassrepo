@@ -25,7 +25,7 @@ jobs:
         run: ./mvnw clean package
 
       - name: java command
-        working-directory: $GITHUB_WORKSPACE/target
+        working-directory: /home/runner/work/myfirstclassrepo/myfirstclassrepo/target
         run: java -jar springboot-first-app-0.0.1-SNAPSHOT.jar
 
   deploy:
