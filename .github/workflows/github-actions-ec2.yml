@@ -1,0 +1,34 @@
+name: Deploy-to-EC2
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    name: Build and Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Change permission of mvnw
+        run: chmod +x mvnw
+
+      - name: Build and Package Maven
+        id: package
+        run: ./mvnw clean package
+
+      - name: java command
+        run: java -jar springboot-first-app-0.0.1-SNAPSHOT.jar
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v2
+
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}
