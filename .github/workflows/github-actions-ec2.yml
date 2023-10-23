@@ -16,6 +16,9 @@ jobs:
 
       - name: chmod
         run: chmod -R +x ./.github
+
+      - name: Change permission of 'mvnw'
+        run: chmod +x mvnw
       
       - name: Build and Package Maven
         id: package
