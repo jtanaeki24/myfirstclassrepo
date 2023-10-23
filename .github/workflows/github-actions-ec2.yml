@@ -7,6 +7,9 @@ jobs:
   build:
     name: Build and Package
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: chmod
         run: chmod -R +x ./.github
@@ -22,6 +25,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Checkout the files
         uses: actions/checkout@v2
