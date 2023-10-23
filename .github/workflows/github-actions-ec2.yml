@@ -8,13 +8,9 @@ jobs:
     name: Build and Package
     runs-on: ubuntu-latest
     steps:
-      - name: Change permission of mvnw
-        working-directory: /home/runner/work/myfirstclassrepo/
-        run: chmod +x mvnw
-
       - name: Build and Package Maven
         id: package
-        run: ./mvnw clean package
+        run: $GITHUB_WORKSPACE/.github/scripts/buildJar.sh
 
       - name: java command
         run: java -jar springboot-first-app-0.0.1-SNAPSHOT.jar
