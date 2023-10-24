@@ -331,15 +331,6 @@ Resources:
         ToPort: 8080
         SourceSecurityGroupId:
           Ref: ALBSecurityGroup
-      SecurityGroupEgress:
-      - IpProtocol: '-1'
-        CidrIp: 0.0.0.0/0      
-  SSHSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: ssh security group
-      VpcId: !Ref VPC
-      SecurityGroupIngress:
       - IpProtocol: tcp
         FromPort: 22
         ToPort: 22
@@ -347,7 +338,7 @@ Resources:
           Ref: ALBSecurityGroup
       SecurityGroupEgress:
       - IpProtocol: '-1'
-        CidrIp: 0.0.0.0/0      
+        CidrIp: 0.0.0.0/0     
   WebappDeploymentBucket:
     Type: AWS::S3::Bucket
     Properties:
