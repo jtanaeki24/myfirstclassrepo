@@ -81,7 +81,6 @@ Parameters:
     Description: GitHub repository name Ex-TestUser/TestCodeDeploy
 
 Resources:
-  WebAppInstance:
   VPC:
     Type: AWS::EC2::VPC
     Properties:
