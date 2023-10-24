@@ -82,15 +82,6 @@ Parameters:
 
 Resources:
   WebAppInstance:
-    Type: AWS::EC2::Instance
-    Properties:
-      AvailabilityZone: us-east-1a
-      ImageId: ami-0dbc3d7bc646e8516
-      InstanceType: t2.micro
-      Tags:
-        - Key: Name
-          Value: test
-
   VPC:
     Type: AWS::EC2::VPC
     Properties:
