@@ -85,7 +85,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       AvailabilityZone: us-east-2a
-      ImageId: ami-074cce78125f09d61
+      ImageId: ami-0dbc3d7bc646e8516
       InstanceType: t2.micro
       SecurityGroupIds:
         - !Ref WebAppSG
