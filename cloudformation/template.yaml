@@ -484,6 +484,11 @@ Resources:
         - Key: Name
           Value: firstclassrepo
           PropagateAtLaunch: true
+      UserData:
+        Fn::Base64:
+          !Sub |
+            #!/bin/bash
+            sudo yum install -y ec2-instance-connect
   ALBListener:
     Type: AWS::ElasticLoadBalancingV2::Listener
     Properties:
