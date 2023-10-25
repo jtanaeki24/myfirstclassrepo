@@ -81,6 +81,46 @@ Parameters:
     Description: GitHub repository name Ex-TestUser/TestCodeDeploy
 
 Resources:
+  #Test instance
+  WebAppInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      ImageId: ami-074cce78125f09d61
+      InstanceType: t2.micro
+      SecurityGroupIds:
+        - !Ref WebAppSecurityGroup
+      Tags:
+        - Key: Name
+          Value: test
+  WebAppSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Join ["-", [webapp-security-group, dev]]
+      GroupDescription: "Allow HTTP/HTTPS and SSH inbound and outbound traffic"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+  WebAppEIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref WebAppInstance
+      Tags:
+        - Key: Name
+          Value: !Join ["-", [webapp-eip, dev]]
+
+
   VPC:
     Type: AWS::EC2::VPC
     Properties:
@@ -484,11 +524,6 @@ Resources:
         - Key: Name
           Value: firstclassrepo
           PropagateAtLaunch: true
-      UserData:
-        Fn::Base64:
-          !Sub |
-            #!/bin/bash
-            sudo yum install -y ec2-instance-connect
   ALBListener:
     Type: AWS::ElasticLoadBalancingV2::Listener
     Properties:
